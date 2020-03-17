@@ -2,7 +2,7 @@
 
 #include<iostream>
 #include<fstream>
-#include<iomanip>   // richa.17688@lpu.co.in
+#include<iomanip>
 #include<string.h>
 #include<conio.h>
 
@@ -195,12 +195,16 @@ void medicine::getmed()
 {
 	fflush(stdin);
 	
-	cout<<"\nEnter Medicine Name                   :  ";   cin.getline(medname,30);
-	cout<<"\nEnter 7-digit Batch number            :  ";   cin.getline(batch,10);
+	cout<<"\nEnter Medicine Name                   :  ";   
+	cin.getline(medname,30);
+	
+	cout<<"\nEnter 7-digit Batch number            :  ";   
+	cin.getline(batch,10);
 
 	f_mfg:
 		
-	cout<<"\nEnter Manufacturing date (dd,mm,yyyy) :  ";   cin>>mfg.dd>>mfg.mm>>mfg.yyyy;
+	cout<<"\nEnter Manufacturing date (dd,mm,yyyy) :  ";   
+	cin>>mfg.dd>>mfg.mm>>mfg.yyyy;
 	
 	if( !( check_date ( mfg.dd, mfg.mm, mfg.yyyy ) ) )
 	{
@@ -208,15 +212,19 @@ void medicine::getmed()
 	}
 	
 	f_exp:
-	cout<<"\nEnter Expiry Date (dd,mm,yyyy)        :  ";   cin>>exp.dd>>exp.mm>>exp.yyyy;
+	cout<<"\nEnter Expiry Date (dd,mm,yyyy)        :  ";   
+	cin>>exp.dd>>exp.mm>>exp.yyyy;
 	
 	if( !( check_date ( exp.dd, exp.mm, exp.yyyy ) ) || !( exp > mfg ) )
 	{
 		cout<<"\nInvalid !"; goto f_exp;
 	}
 	
-	cout<<"\nEnter Quantity                        :  ";   cin>>qty;
-	cout<<"\nEnter Price                           :  ";   cin>>mrp;
+	cout<<"\nEnter Quantity                        :  ";  
+	cin>>qty;
+	
+	cout<<"\nEnter Price                           :  ";   
+	cin>>mrp;
 	        
 }
 
@@ -284,10 +292,10 @@ bool access()
 			         goto flag_1;
 		}
 		
-		system("cls");
+	    system("cls");
 		
-		ifstream fin("_login.dat");
-        fin.read( (char*) &login , sizeof(login) );
+	    ifstream fin("_login.dat");
+            fin.read( (char*) &login , sizeof(login) );
 	    login.show_id();
 	    getch();
 	    
@@ -297,7 +305,9 @@ bool access()
 	}
 	
 	else
-	{ flag:
+	{
+	  
+		flag:
 		
 		f.read( (char*) &login , sizeof(login) );
 		
@@ -378,7 +388,8 @@ void setup( int i )
 	login login;
 	fstream fsetup("_login.dat",ios::out);
 
-	if(i) login.set_id();
+	if(i) 
+	login.set_id();
 	
 	fsetup.write( (char*)&login , sizeof(login) );
 	
